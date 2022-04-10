@@ -1,0 +1,26 @@
+{
+  "name": "guess-my-number",
+  "version": "1.0.0",
+  "description": "Project#1 in the John Schmedmannt JS Course",
+  "main": "script.js",
+  "scripts": {
+    "test": "start script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hafidzfg/guess-my-number-game.git"
+  },
+  "keywords": [
+    "javascript",
+    "guess",
+    "my",
+    "number",
+    "game"
+  ],
+  "author": "Hafidz Firmansyah Ghufara (hafidzfg@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hafidzfg/guess-my-number-game/issues"
+  },
+  "homepage": "https://github.com/hafidzfg/guess-my-number-game#readme"
+}
