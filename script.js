@@ -6,21 +6,31 @@ let score = document.querySelector('.score');
 let messageResult = document.querySelector('.message');
 let highScore = document.querySelector('.highscore');
 let numberDisplay = document.querySelector('.number');
+let randomNumber = Math.floor(Math.random() * 20 + 1);
+
 let checkWinner = (btnCheck.onclick = function checkNumber() {
-  let randomNumber = Math.floor(Math.random() * 20 + 1);
-  numberDisplay.innerHTML = randomNumber;
   if (guessNumber.value == randomNumber) {
     messageResult.innerText = '🎉Correct!';
-    highScore.innerText = guessNumber.value;
     document.body.style.backgroundColor = 'seagreen';
+    numberDisplay.innerHTML = randomNumber;
+    guessNumber.disabled = true;
+    btnCheck.disabled = true;
+    if (guessNumber.value > highScore.innerText) {
+      highScore.innerText = guessNumber.value;
+    }
   } else if (guessNumber.value > 20 || guessNumber.value < 1) {
     messageResult.innerText = '❌ No no no, guess between 1 - 20 only!';
   } else if (guessNumber.value != randomNumber) {
-    messageResult.innerText = '🙅‍♀️ Nope, try again!';
-    score.innerText = score.innerText - 1;
-    document.body.style.backgroundColor = 'hotpink';
-    if (score.innerText === '0') {
-      messageResult.innerText = "☠️ Game Over! Please reload or click 'Again!'";
+    if (guessNumber.value > randomNumber) {
+      messageResult.innerText = '🙅‍♀️ You guessed too high!';
+      score.innerText = score.innerText - 1;
+      document.body.style.backgroundColor = 'hotpink';
+    } else if (guessNumber.value < randomNumber) {
+      messageResult.innerText = '🙅 You guessed too low!';
+      score.innerText = score.innerText - 1;
+      document.body.style.backgroundColor = 'hotpink';
+    } else if (score.innerText === '0') {
+      messageResult.innerText = '☠️ Game Over!';
       guessNumber.disabled = true;
       btnCheck.disabled = true;
       document.body.style.backgroundColor = 'maroon';
@@ -28,6 +38,10 @@ let checkWinner = (btnCheck.onclick = function checkNumber() {
   }
 });
 document.querySelector('.btn.again').addEventListener('click', function () {
-  location.reload();
-  return false;
+  document.body.style.backgroundColor = '#222';
+  messageResult.innerText = 'Take a guess!';
+  guessNumber.disabled = false;
+  btnCheck.disabled = false;
+  numberDisplay.innerHTML = '?';
+  randomNumber;
 });
